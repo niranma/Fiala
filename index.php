@@ -41,7 +41,7 @@
                 <!-- row 1      item1 -->
                 <div class="row food_item">
                       <div class="food_img" style="padding-top: 15;">
-                        <img src="Fialas3.jpg" alt="John" style="width:90% ; height:90%;">
+                        <img src="food_placeholder.webp" alt="John" style="width:90% ; height:90%;">
                         <p style="width: 100%; padding-top: 15;">here is some text about the process of brewing our own beer</p>
                       </div>
                   </div>
@@ -49,7 +49,7 @@
                   <!-- row 1      item2 -->
                   <div class="row food_item">
                       <div class="food_img" style="padding-top: 15;">
-                        <img src="Fialas3.jpg" alt="John" style="width:90% ; height:90%;">
+                        <img src="food_placeholder.webp" alt="John" style="width:90% ; height:90%;">
                         <p style="width: 100%; padding-top: 15;">here is some text about the process of brewing our own beer</p>
                       </div>
                   </div>
@@ -57,7 +57,7 @@
                   <!-- row 2      item1 -->
                   <div class="row food_item">
                       <div class="food_img" style="padding-top: 15;">
-                        <img src="Fialas3.jpg" alt="John" style="width:90% ; height:90%;">
+                        <img src="food_placeholder.webp" alt="John" style="width:90% ; height:90%;">
                         <p style="width: 100%; padding-top: 15;">here is some text about the process of brewing our own beer</p>
                       </div>
                   </div>
@@ -65,7 +65,7 @@
                   <!-- row 2      item2 -->
                   <div class="row food_item">
                       <div class="food_img" style="padding-top: 15;">
-                        <img src="Fialas3.jpg" alt="John" style="width:90% ; height:90%;">
+                        <img src="food_placeholder.webp" alt="John" style="width:90% ; height:90%;">
                         <p style="width: 100%; padding-top: 15;">here is some text about the process of brewing our own beer</p>
                       </div>
                   </div>
@@ -73,7 +73,7 @@
                   <!-- row 3      item1 -->
                   <div class="row food_item">
                       <div class="food_img" style="padding-top: 15;">
-                        <img src="Fialas3.jpg" alt="John" style="width:90% ; height:90%;">
+                        <img src="food_placeholder.webp" alt="John" style="width:90% ; height:90%;">
                         <p style="width: 100%; padding-top: 15;">here is some text about the process of brewing our own beer</p>
                       </div>
                   </div>
@@ -81,7 +81,7 @@
                   <!-- row 3      item2 -->
                   <div class="row food_item">
                       <div class="food_img" style="padding-top: 15;">
-                        <img src="Fialas3.jpg" alt="John" style="width:90% ; height:90%;">
+                        <img src="food_placeholder.webp" alt="John" style="width:90% ; height:90%;">
                         <p style="width: 100%; padding-top: 15;">here is some text about the process of brewing our own beer</p>
                       </div>
                   </div>
@@ -89,7 +89,7 @@
                   <!-- row 4      item1 -->
                   <div class="row food_item">
                       <div class="food_img" style="padding-top: 15;">
-                        <img src="Fialas3.jpg" alt="John" style="width:90% ; height:90%;">
+                        <img src="food_placeholder.webp" alt="John" style="width:90% ; height:90%;">
                         <p style="width: 100%; padding-top: 15;">here is some text about the process of brewing our own beer</p>
                       </div>
                   </div>
@@ -97,7 +97,7 @@
                   <!-- row 4      item2 -->
                   <div class="row food_item">
                       <div class="food_img" style="padding-top: 15;">
-                        <img src="Fialas3.jpg" alt="John" style="width:90% ; height:90%;">
+                        <img src="food_placeholder.webp" alt="John" style="width:90% ; height:90%;">
                         <p style="width: 100%; padding-top: 15;">here is some text about the process of brewing our own beer</p>
                       </div>
                   </div>
@@ -105,7 +105,7 @@
                   <!-- row 5      item1 -->
                   <div class="row food_item">
                       <div class="food_img" style="padding-top: 15;">
-                        <img src="Fialas3.jpg" alt="John" style="width:90% ; height:90%;">
+                        <img src="food_placeholder.webp" alt="John" style="width:90% ; height:90%;">
                         <p style="width: 100%; padding-top: 15;">here is some text about the process of brewing our own beer</p>
                       </div>
                   </div>
@@ -113,7 +113,7 @@
                   <!-- row 5      item2 -->
                   <div class="row food_item">
                       <div class="food_img" style="padding-top: 15;">
-                        <img src="Fialas3.jpg" alt="John" style="width:90% ; height:90%;">
+                        <img src="food_placeholder.webp" alt="John" style="width:90% ; height:90%;">
                         <p style="width: 100%; padding-top: 15;">here is some text about the process of brewing our own beer</p>
                       </div>
                   </div>
