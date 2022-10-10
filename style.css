@@ -34,7 +34,7 @@ html {
 .description-section {
   padding: 50px;
   text-align: center;
-  color: 474e5d;
+  color: #474e5d;
 }
 
 .container {
@@ -96,4 +96,49 @@ html {
     width: 100%;
     display: block;
   }
+}
+
+
+/* new css here and below */
+
+
+.order_drinks{
+  color: black;
+}
+
+.order_food{
+  color: black;
+  background-color: #474e5d;
+  display: block;
+  font-size: 6vh;
+  text-align: center;
+  border: 0.5vh;
+  border-style: solid;
+  border-color: #30353f;
+  height: 25%;
+  padding-top: 8vh;
+}
+
+.drink_menu {
+  height:90%;
+  width:75%;
+  background-color: #d1cfcf;
+  border:1px solid #9b9a9a;
+  font:16px/26px Georgia, Garamond, Serif;
+  overflow:auto;
+  text-align: center;
+  margin-left: 12.5%;
+}
+
+.food_item{
+  background-color: #b7b6b6;
+  height: 25%;
+  width: 49%;
+  display: inline-block;
+  margin: 5 0 5 0;
+  column-count: 2;
+}
+
+.food_img{
+  width: 100%;
 }
