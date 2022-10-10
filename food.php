@@ -15,108 +15,132 @@
         <a href="#about_us">About us</a>
       </div>
 
-
-      <!-- index, start of the site here-->
-      <div id="main_section">
-        <h1>welcome to the site, maybe some pictures and what is on sale and events????</h1>
-        <h1> location: 
-          127 E Beaufort St, Normal, IL, United States, Illinois </h1>
-        <h1>current deals</h1>
-        <h1> live facebook page link??</h1>
-        <h1></h1>
-      </div>
-
-
     <!--ordering food section-->
     <div id="food_section">
       <div class="order_food">
-        <a href="https://www.toasttab.com/fialabrothers/v3" target="_blank">food here here!</a>
+        <h2>our menu!</h2>
       </div>
           <div class="order_drinks">
             <div style="z-index: 0; background-color: #ededed; width: 100%; height: 100%; text-align: center;">
               <p style="margin-top: 0;">order Drinks</p>
                 <div class="drink_menu">
                   
-              <!-- start of food menu -->
-                <!-- row 1      item1 -->
-                <div class="row food_item">
-                      <div class="food_img" style="padding-top: 15;">
-                        <img src="food_placeholder.webp" alt="John" style="width:90% ; height:90%;">
-                        <p style="width: 100%; padding-top: 15;">here is some text about the process of brewing our own beer</p>
-                      </div>
-                  </div>
+                <!-- testing php -->
+                <?php
+                    $con = mysqli_connect("localhost","kevin","kevin", "beer");
 
-                  <!-- row 1      item2 -->
-                  <div class="row food_item">
-                      <div class="food_img" style="padding-top: 15;">
-                        <img src="food_placeholder.webp" alt="John" style="width:90% ; height:90%;">
-                        <p style="width: 100%; padding-top: 15;">here is some text about the process of brewing our own beer</p>
-                      </div>
-                  </div>
+                    // Check connection
+                    if (mysqli_connect_errno()) {
+                      echo "Failed to connect to MySQL: " . mysqli_connect_error();
+                      exit();
+                    }
 
-                  <!-- row 2      item1 -->
-                  <div class="row food_item">
-                      <div class="food_img" style="padding-top: 15;">
-                        <img src="food_placeholder.webp" alt="John" style="width:90% ; height:90%;">
-                        <p style="width: 100%; padding-top: 15;">here is some text about the process of brewing our own beer</p>
-                      </div>
-                  </div>
+                    // echo "Database connected!". "<br><br><br><br>";
 
-                  <!-- row 2      item2 -->
-                  <div class="row food_item">
-                      <div class="food_img" style="padding-top: 15;">
-                        <img src="food_placeholder.webp" alt="John" style="width:90% ; height:90%;">
-                        <p style="width: 100%; padding-top: 15;">here is some text about the process of brewing our own beer</p>
-                      </div>
-                  </div>
+                      // button1 has been pressed 
+                      $sql = "SELECT id, name, price from beer_names;";
+                      $result=mysqli_query($con,$sql);
+                      
+                      if ($result->num_rows > 0) {
+                          // output data of each row
+                          while($row = $result->fetch_assoc()) {
 
-                  <!-- row 3      item1 -->
-                  <div class="row food_item">
-                      <div class="food_img" style="padding-top: 15;">
-                        <img src="food_placeholder.webp" alt="John" style="width:90% ; height:90%;">
-                        <p style="width: 100%; padding-top: 15;">here is some text about the process of brewing our own beer</p>
-                      </div>
-                  </div>
+                              //   &emsp; is a 4 space escape char
+                              // echo "ID: ". $row["id"] . "&emsp;name: " . $row["name"]. "&emsp;&emsp;price: " .$row["price"]. "<br>";
+                              echo '
+                              <div class="row food_item">
+                                  <div class="food_img" style="padding-top: 15;">
+                                    <img src="food_placeholder.webp" alt="John" style="width:90% ; height:90%;">
+                                    <p style="width: 100%; padding-top: 15;"> $row["id"] . "&emsp;name: " . $row["name"]. "&emsp;&emsp;price: " .$row["price"].</p>
+                                  </div>
+                              </div>
+                              ';
+                            }
+                        }
+                        echo "<br><br><br><br>";
+                    
+                  ?>
 
-                  <!-- row 3      item2 -->
-                  <div class="row food_item">
-                      <div class="food_img" style="padding-top: 15;">
-                        <img src="food_placeholder.webp" alt="John" style="width:90% ; height:90%;">
-                        <p style="width: 100%; padding-top: 15;">here is some text about the process of brewing our own beer</p>
-                      </div>
-                  </div>
+                                                                <!-- start of food menu -->
+                                                                  <!-- row 1      item1 -->
+                                                                  <!-- <div class="row food_item">
+                                                                        <div class="food_img" style="padding-top: 15;">
+                                                                          <img src="food_placeholder.webp" alt="John" style="width:90% ; height:90%;">
+                                                                          <p style="width: 100%; padding-top: 15;">here is some text about the process of brewing our own beer</p>
+                                                                        </div>
+                                                                    </div> -->
 
-                  <!-- row 4      item1 -->
-                  <div class="row food_item">
-                      <div class="food_img" style="padding-top: 15;">
-                        <img src="food_placeholder.webp" alt="John" style="width:90% ; height:90%;">
-                        <p style="width: 100%; padding-top: 15;">here is some text about the process of brewing our own beer</p>
-                      </div>
-                  </div>
+                                                                    <!-- row 1      item2 -->
+                                                                    <!-- <div class="row food_item">
+                                                                        <div class="food_img" style="padding-top: 15;">
+                                                                          <img src="food_placeholder.webp" alt="John" style="width:90% ; height:90%;">
+                                                                          <p style="width: 100%; padding-top: 15;">here is some text about the process of brewing our own beer</p>
+                                                                        </div>
+                                                                    </div> -->
 
-                  <!-- row 4      item2 -->
-                  <div class="row food_item">
-                      <div class="food_img" style="padding-top: 15;">
-                        <img src="food_placeholder.webp" alt="John" style="width:90% ; height:90%;">
-                        <p style="width: 100%; padding-top: 15;">here is some text about the process of brewing our own beer</p>
-                      </div>
-                  </div>
+                                                                    <!-- row 2      item1 -->
+                                                                    <!-- <div class="row food_item">
+                                                                        <div class="food_img" style="padding-top: 15;">
+                                                                          <img src="food_placeholder.webp" alt="John" style="width:90% ; height:90%;">
+                                                                          <p style="width: 100%; padding-top: 15;">here is some text about the process of brewing our own beer</p>
+                                                                        </div>
+                                                                    </div> -->
 
-                  <!-- row 5      item1 -->
-                  <div class="row food_item">
-                      <div class="food_img" style="padding-top: 15;">
-                        <img src="food_placeholder.webp" alt="John" style="width:90% ; height:90%;">
-                        <p style="width: 100%; padding-top: 15;">here is some text about the process of brewing our own beer</p>
-                      </div>
-                  </div>
+                                                                    <!-- row 2      item2 -->
+                                                                    <!-- <div class="row food_item">
+                                                                        <div class="food_img" style="padding-top: 15;">
+                                                                          <img src="food_placeholder.webp" alt="John" style="width:90% ; height:90%;">
+                                                                          <p style="width: 100%; padding-top: 15;">here is some text about the process of brewing our own beer</p>
+                                                                        </div>
+                                                                    </div> -->
 
-                  <!-- row 5      item2 -->
-                  <div class="row food_item">
-                      <div class="food_img" style="padding-top: 15;">
-                        <img src="food_placeholder.webp" alt="John" style="width:90% ; height:90%;">
-                        <p style="width: 100%; padding-top: 15;">here is some text about the process of brewing our own beer</p>
-                      </div>
-                  </div>
+                                                                    <!-- row 3      item1 -->
+                                                                    <!-- <div class="row food_item">
+                                                                        <div class="food_img" style="padding-top: 15;">
+                                                                          <img src="food_placeholder.webp" alt="John" style="width:90% ; height:90%;">
+                                                                          <p style="width: 100%; padding-top: 15;">here is some text about the process of brewing our own beer</p>
+                                                                        </div>
+                                                                    </div> -->
+
+                                                                    <!-- row 3      item2 -->
+                                                                    <!-- <div class="row food_item">
+                                                                        <div class="food_img" style="padding-top: 15;">
+                                                                          <img src="food_placeholder.webp" alt="John" style="width:90% ; height:90%;">
+                                                                          <p style="width: 100%; padding-top: 15;">here is some text about the process of brewing our own beer</p>
+                                                                        </div>
+                                                                    </div> -->
+
+                                                                    <!-- row 4      item1 -->
+                                                                    <!-- <div class="row food_item">
+                                                                        <div class="food_img" style="padding-top: 15;">
+                                                                          <img src="food_placeholder.webp" alt="John" style="width:90% ; height:90%;">
+                                                                          <p style="width: 100%; padding-top: 15;">here is some text about the process of brewing our own beer</p>
+                                                                        </div>
+                                                                    </div> -->
+
+                                                                    <!-- row 4      item2 -->
+                                                                    <!-- <div class="row food_item">
+                                                                        <div class="food_img" style="padding-top: 15;">
+                                                                          <img src="food_placeholder.webp" alt="John" style="width:90% ; height:90%;">
+                                                                          <p style="width: 100%; padding-top: 15;">here is some text about the process of brewing our own beer</p>
+                                                                        </div>
+                                                                    </div> -->
+
+                                                                    <!-- row 5      item1 -->
+                                                                    <!-- <div class="row food_item">
+                                                                        <div class="food_img" style="padding-top: 15;">
+                                                                          <img src="food_placeholder.webp" alt="John" style="width:90% ; height:90%;">
+                                                                          <p style="width: 100%; padding-top: 15;">here is some text about the process of brewing our own beer</p>
+                                                                        </div>
+                                                                    </div> -->
+
+                                                                    <!-- row 5      item2 -->
+                                                                    <!-- <div class="row food_item">
+                                                                        <div class="food_img" style="padding-top: 15;">
+                                                                          <img src="food_placeholder.webp" alt="John" style="width:90% ; height:90%;">
+                                                                          <p style="width: 100%; padding-top: 15;">here is some text about the process of brewing our own beer</p>
+                                                                        </div>
+                                                                    </div> -->
               <!-- end of food menu -->
 
               </div>

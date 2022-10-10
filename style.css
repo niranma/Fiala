@@ -116,7 +116,7 @@ html {
   border-style: solid;
   border-color: #30353f;
   height: 25%;
-  padding-top: 8vh;
+  /* padding-top: 8vh; */
 }
 
 .drink_menu {
