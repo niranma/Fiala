@@ -29,7 +29,7 @@ if(array_key_exists('view', $_POST)) {
     } else {
         echo "0 results";
     }
-    echo "<br>ddddddddd<br><br><br>";
+    echo "<br><br><br><br>";
 }
 
 else if(array_key_exists('add', $_POST)) {
