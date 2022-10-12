@@ -10,15 +10,15 @@
         
     <!-- navigation bar -->
       <div class="topnav">
-        <a href="#main_section" >Home</a>
-        <a href="#food_section" >Order food & drinks</a>
-        <a href="#about_us">About us</a>
+        <a href="index.html" >Home</a>
+        <a href="food.php" >Order food & drinks</a>
+        <a href="index.html#about_us">About us</a>
       </div>
 
     <!--ordering food section-->
     <div id="food_section">
       <div class="order_food">
-        <h2>our menu!</h2>
+        <h2>our current menu!</h2>
       </div>
           <div class="order_drinks">
             <div style="z-index: 0; background-color: #ededed; width: 100%; height: 100%; text-align: center;">
@@ -74,18 +74,23 @@
         </div>
       </div>
 
-          <h1>social media links?</h1>
+          <div class="soicalMedia">
+            <h1>Stay up to date with us on our social media </h1>
+            <p><a href="https://www.facebook.com/fialabrothers/">Facebook</a></p>
+            <p><a href="https://www.instagram.com/fialabros/">Instagram</a></p>
+            <p><a href="https://untappd.com/v/fiala-brothers-brewery-beer-hall/11508670">Untapped</a></p>
+          </div>
 
-      <h2 style="text-align:center">Our Team</h2>
+          <h2 style="text-align:center">Our Team</h2>
       <div class="row">
         <div class="column">
           <div class="card">
             <img src="Fialas2.jpg" alt="Jane" style="width:100%">
-            <div class="container">
-              <h2>Jane Doe</h2>
+            <div class="container" style="text-align: center;">
+              <h2>Mike Smith</h2>
               <p class="title">CEO & Founder</p>
-              <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-              <p>jane@example.com</p>
+              <p>I am Mike Smith and I am the CEO and founder of Fiala Brothers, it has always been my dream to own a bar.</p>
+              <p>Mike@FialaBrothers.com</p>
               <p><button class="button">Contact</button></p>
             </div>
           </div>
@@ -93,12 +98,12 @@
       
         <div class="column">
           <div class="card">
-            <img src="Fialas3.jpg" alt="Mike" style="width:100%">
-            <div class="container">
+            <img src="barback.webp" alt="Mike" style="width:100%">
+            <div class="container" style="text-align: center;">
               <h2>Bob Ross</h2>
-              <p class="title">Art Director</p>
-              <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-              <p>mike@example.com</p>
+              <p class="title">CFO</p>
+              <p>I am the CFO of Fiala Brothers, I manage all the money or what ever a CFO does</p>
+              <p>Bob@FialaBrothers.com</p>
               <p><button class="button">Contact</button></p>
             </div>
           </div>
@@ -106,12 +111,12 @@
       
         <div class="column">
           <div class="card">
-            <img src="Fialas4.jpg" alt="John" style="width:100%">
-            <div class="container">
-              <h2>John Doe</h2>
-              <p class="title">Designer</p>
-              <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-              <p>john@example.com</p>
+            <img src="designer.webp" alt="John" style="width:100%">
+            <div class="container" style="text-align: center;">
+              <h2>jane smith</h2>
+              <p class="title">Lead Designer</p>
+              <p>I have be desinging products for many people and businesses, I have been doing this for 17 years.</p>
+              <p>Jane@FialaBrothers.com</p>
               <p><button class="button">Contact</button></p>
             </div>
           </div>
