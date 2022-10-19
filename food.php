@@ -18,7 +18,7 @@
     <!--ordering food section-->
     <div id="food_section">
       <div class="order_food">
-        <h2>our current menu!</h2>
+        <h2>Our Current Menu!</h2>
       </div>
           <div class="order_drinks">
             <div style="z-index: 0; background-color: #ededed; width: 100%; height: 100%; text-align: center;">
