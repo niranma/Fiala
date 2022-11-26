@@ -1,39 +1,43 @@
 <?php
    include("config.php");
    session_start();
-   
-   if($_SERVER["REQUEST_METHOD"] == "POST") {
-      // username and password sent from form 
-      
+   $_SESSION['authenticated'] = false;
+
+   if($_SERVER["REQUEST_METHOD"] == "POST")
+   {
+      // grab username and password. set authenticated to false
       $myusername = mysqli_real_escape_string($db,$_POST['username']);
       $mypassword = mysqli_real_escape_string($db,$_POST['password']); 
-      
-      $sql = "SELECT id FROM admin WHERE username = '$myusername' and passcode = '$mypassword'";
+      $_SESSION['authenticated'] = false;
+    
+      // prepare SQL to search for login credientals 
+      $sql = "SELECT * FROM admin WHERE username = '$myusername' and password = '$mypassword'";
       $result = mysqli_query($db,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-      $active = $row['active'];
-      
       $count = mysqli_num_rows($result);
-      
-      // If result matched $myusername and $mypassword, table row must be 1 row
+      $error = "";
 		
-      if($count == 1) {
-         session_register("myusername");
+      // If match found log user in and set authenticated to true
+      if($count == 1)
+      {
          $_SESSION['login_user'] = $myusername;
-         
-         header("location: welcome.php");
-      }else {
+         $_SESSION['authenticated'] = true;
+         $error = "valid";
+         header("location: fart.php");
+      }else
+      {
          $error = "Your Login Name or Password is invalid";
+         $_SESSION['authenticated'] = false;
+         echo $error;
       }
    }
 ?>
-<html>
-   
+
+<html>   
    <head>
       <title>Login Page</title>
-      
       <style type = "text/css">
-         body {
+         body{
             font-family:Arial, Helvetica, sans-serif;
             font-size:14px;
          }
@@ -46,30 +50,20 @@
             border:#666666 solid 1px;
          }
       </style>
-      
    </head>
    
-   <body bgcolor = "#FFFFFF">
-	
+   <body background-color = "#FFFFFF">
       <div align = "center">
          <div style = "width:300px; border: solid 1px #333333; " align = "left">
             <div style = "background-color:#333333; color:#FFFFFF; padding:3px;"><b>Login</b></div>
-				
             <div style = "margin:30px">
-               
                <form action = "" method = "post">
                   <label>UserName  :</label><input type = "text" name = "username" class = "box"/><br /><br />
                   <label>Password  :</label><input type = "password" name = "password" class = "box" /><br/><br />
                   <input type = "submit" value = " Submit "/><br />
                </form>
-               
-               <div style = "font-size:11px; color:#cc0000; margin-top:10px"><?php echo $error; ?></div>
-					
             </div>
-				
          </div>
-			
       </div>
-
    </body>
 </html>
