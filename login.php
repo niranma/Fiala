@@ -6,8 +6,8 @@
    if($_SERVER["REQUEST_METHOD"] == "POST")
    {
       // grab username and password. set authenticated to false
-      $myusername = mysqli_real_escape_string($db,$_POST['username']);
-      $mypassword = mysqli_real_escape_string($db,$_POST['password']); 
+      $myusername = mysqli_real_escape_string($db,md5($_POST['username']));
+      $mypassword = mysqli_real_escape_string($db,md5($_POST['password'])); 
       $_SESSION['authenticated'] = false;
     
       // prepare SQL to search for login credientals 
@@ -26,9 +26,8 @@
          header("location: fart.php");
       }else
       {
-         $error = "Your Login Name or Password is invalid";
          $_SESSION['authenticated'] = false;
-         echo $error;
+         echo "<h1 id='error' style='text-align: center; color: red;'>Your Login Name or Password is invalid!</h1>";
       }
    }
 ?>
