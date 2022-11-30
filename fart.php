@@ -16,7 +16,15 @@
 <meta http-equiv="refresh" content="500;url=logout.php" />
 
 <html>
-    <body>
+    <head>
+        <style>
+            .spacer{
+                width: 100%;
+                height: 15%;
+            }
+        </style>
+    </head>
+    <body style="background-color: #e7dfdf;">
         <?php
 
             // if user not logged in redirect to logout page  
@@ -39,8 +47,18 @@
                 }
 
                 // successful connection to database
-                echo "Database connected!". "<br><br><br><br>";
+                echo "<h1 style='text-align: center; padding-top: 2%;'>Successful connection to the Database!</h1><br><br><br>";
 
+                echo'
+                        <form method="post" style="text-align: center;">
+                            <!-- view data button -->
+                            <button style="margin-bottom: 50px; font-size: 2vw; height: 3vw;"type="submit" name="view" class="button" >View data </button>  
+                            
+                            <!-- logout button -->
+                            <button name="logout" style="margin-bottom: 50px; margin-left:10%; font-size: 2vw; height: 3vw;" onclick="">Logout</button>
+                        </form>
+                    ';
+                
                 // function to display database data in a table
                 function viewData($con)
                 {
@@ -53,7 +71,7 @@
                     {
                         // set up top of the table with names of column
                         echo "
-                            <table style='padding-left: 5%; width: 95%;'> 
+                        <div><table style='padding-left: 5%; width: 95%;'> 
                                 <tr style='border: 1px solid black;'>
                                     <th style='border: 1px solid black;'>ID</th>
                                     <th style='border: 1px solid black;'>Name</th>
@@ -67,14 +85,14 @@
                         {
                             echo "
                                 <tr style='border: 1px solid black;'>
-                                    <td style='border: 1px solid black;'>ID: ". $row["id"]."</td>
-                                    <td style='border: 1px solid black;'>name: ". $row["name"]. "</td>
-                                    <td style='border: 1px solid black;'>price: " . $row["price"]."</td>
-                                    <td style='border: 1px solid black;'>picture:". $row["picture"]."</td>
-                                    <td style='border: 1px solid black;'>Description: ". $row["description"]. "</td>
+                                    <td style='border: 1px solid black;'>". $row["id"]."</td>
+                                    <td style='border: 1px solid black;'>". $row["name"]. "</td>
+                                    <td style='border: 1px solid black;'>" . $row["price"]."</td>
+                                    <td style='border: 1px solid black;'>". $row["picture"]."</td>
+                                    <td style='border: 1px solid black;'>". $row["description"]. "</td>
                                 </tr>";
                         }
-                        echo "<table>";
+                        echo "<table></div>";
                         
                         //else no results found 
                         } else 
@@ -173,67 +191,104 @@
                 }
             } 
         ?>
-
-        <form method="post">
-        
-            <!-- view data button -->
-            <input style="margin-bottom: 50px;"type="submit" name="view" class="button" value="View data" />  
-            
-            <!-- logout button -->
-            <button name="logout" style="align: right;" onclick="">logout</button>
-        </form>
-
         
         <!-- edit data section       DO NOT CHANGE NAME FIELD IT WILL BREAK THE PHP-->
-        <form method="post">
-            <h2>Edit data </h2>
-            <h3>you can edit any value except the ID. Use ID to select what row you want to change</h3>
-            <p style="display: inline;">id: </p>
-            <input type="number" name="id" placeholder="number's only"/>
+        <div name="main" style=" font-size: 20px; background-color: #e7dfdf;">
 
-            <p style="display: inline;">name: </p>
-            <input type="text" name="name" placeholder="character's only "/>
+            <form method="post">
+                <div style=" text-align: center;">
+                     <h1 style="text-align: center;">Edit data in the Databae</h1>
+                     <h2 style="text-align: center;">You can edit any value except the ID.</h2>
+                     <h2 style="text-align: center;">Use the ID to select what item you want to change.</h2>
 
-            <p style="display: inline;">price: </p>
-            <input type="number" step="0.01" name="price" placeholder="number or decimal only"/>
+                        <table style="margin-left: 25%;width: 50%">
+                            <tr>
+                                <th><p style="display: inline; font-size: 20px">ID: </p></th>
+                                <th><input style="margin-right: 8%;" type="number" name="id" placeholder="number's only"/></th>
+                            </tr>
+
+                            <tr>
+                                <th><p style="display: inline; font-size: 20px">Name: </p></th>
+                                <th><input style="margin-right: 8%;" type="text" name="name" placeholder="character's only "/></th>
+                            </tr>
+                            
+                            <tr>
+                                <th><p style="display: inline; font-size: 20px">Price: </p></th>
+                                <th><input  style="margin-right: 8%;" type="number" step="0.01" name="price" placeholder="number or decimal only"/></th>
+                            </tr>
+                            
+                            <tr>
+                                <th><p style="display: inline; font-size: 20px">Upload Picture (WIP)</p></th>
+                                <th><input style="margin-right: 8%;" type="text" name="picture" placeholder="character's only "/></th>
+                            </tr>
+                            
+                            <tr>
+                                <th><p style="display: inline; font-size: 20px">Item Description</p></th>
+                                <th><input style="margin-right: 8%;" type="text" name="description" placeholder="character's only "/></th>
+                            </tr>
+                        </table>
+                    
+                    <br>
+                </div>
+                <button style="margin-left: 35%;text-align: center; font-size: 2vw; height: 3vw; width: 30%;" type="submit" name="edit" class="button" value="Change">Make changes</button>
+            </form>
             
-            <p style="display: inline;">upload Picture (WIP)</p>
-            <input type="text" name="picture" placeholder="character's only "/>
-
-            <p style="display: inline;">item description</p>
-            <input type="text" name="description" placeholder="character's only "/>
-            
-            <input type="submit" name="edit" class="button" value="Change"/>
-            <br><br><br><br>
-        </form>
-
+            <div class="spacer"></div>
         <!-- add data section       DO NOT CHANGE NAME FIELD IT WILL BREAK THE PHP-->
         <form method="post">
-            <h2>add new data</h2>
-            <p style="display: inline;">id: </p>
-            <input type="number" name="id" placeholder="number's only"/>
+            <div style="text-align: center;">
 
-            <p style="display: inline;">name: </p>
-            <input type="text" name="name" placeholder="character's only "/>
+                <h1>add new data</h1>
+                <h2>to add new data chose a unique ID number and fill in the following fields</h2>
+                <table style="margin-left: 25%;width: 50%">
+                    <tr>
+                        <th><p style="display: inline; font-size: 20px">ID: </p></th>
+                        <th><input type="number" name="id" placeholder="number's only"/></th>
+                    </tr>
 
-            <p style="display: inline;">price: </p>
-            <input type="number" step="0.01" name="price" placeholder="number or decimal only"/>
-            
-            <p style="display: inline;">upload Picture (WIP)</p>
-            <input type="text" name="picture" placeholder="character's only "/>
+                    <tr>
+                        <th><p style="display: inline;  font-size: 20px">Name: </p></th>
+                        <th><input type="text" name="name" placeholder="character's only "/></th>
+                    </tr>
 
-            <p style="display: inline;">item description</p>
-            <input type="text" name="description" placeholder="character's only "/>
+                    <tr>
+                        <th><p style="display: inline; font-size: 20px">Price: </p></th>
+                        <th><input type="number" step="0.01" name="price" placeholder="number or decimal only"/></th>
+                    </tr>
 
-            <input type="submit" name="add" class="button" value="add"/>
+                    <tr>
+                        <th><p style="display: inline; font-size: 20px">Upload Picture (WIP)</p></th>
+                        <th><input type="text" name="picture" placeholder="character's only "/></th>
+                    </tr>
+
+                    <tr>
+                        <th><p style="display: inline; font-size: 20px">Item Description</p></th>
+                        <th><input type="text" name="description" placeholder="character's only "/></th>
+                    </tr>
+
+                </table>
+                <br>
+                <button style="text-align: center; font-size: 2vw; height: 3vw; width: 30%;" type="submit" name="add" class="button" value="add">Add Data</button>
+            </div>
         </form>
+
+        <div class="spacer"></div>
 
         <!-- remove data section       DO NOT CHANGE NAME FIELD IT WILL BREAK THE PHP-->
         <form method="post">
-            <h2 style="margin-bottom: 50px; margin-top: 100px;">remove data</h2>
-            <p style="display: inline;">id: </p>
-            <input type="text" name="id" placeholder="number's only"/>    
-            <input type="submit" name="remove" class="button" value="remove" />
+            <div style="text-align: center;">
+
+                <h1>Remove Data</h1>
+                <h2>To remove an item enter the ID number into the field</h2>
+                <table style="margin-left: 25%;width: 50%">
+                    <tr>
+                        <th><p style="display: inline; font-size: 20px">Item Description</p></th>
+                        <th><input style="margin-right: -8%;" type="number" name="id" placeholder="numbers's only "/></th>
+                    </tr>
+                </table>
+                <br>
+                <button style="text-align: center; font-size: 2vw; height: 3vw; width: 30%;" type="submit" name="remove" class="button" value="add">Remove Data</button>
+            </div>
         </form>
         
     </body>

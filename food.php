@@ -8,12 +8,18 @@
     <!-- css sheets -->
     <link rel="stylesheet" href="style.css">
         
-    <!-- navigation bar -->
-      <div class="topnav">
-        <a href="index.html" >Home</a>
-        <a href="food.php" >Order food & drinks</a>
-        <a href="index.html#about_us">About us</a>
-      </div>
+   <!-- navigation bar -->
+   <header>
+      <img class="logo" src="img/FialaLogo.png" width="70" height="50" alt="logo">
+      <nav>
+        <ul class="nav__links">
+          <li><a href="index.html" >Home</a></li>
+          <li><a href="food.php" >Order food & drinks</a></li>
+          <li><a href="index.html#about_us">About us</a></li>
+        </ul>
+      </nav>
+      <a class="cta"><button>Contact</button></a>
+    </header>
 
     <!--ordering food section-->
     <div id="food_section">
@@ -48,7 +54,7 @@
                               //   &emsp; is a 4 space escape char
                               echo '<div class="row food_item">';
                               echo '    <div class="food_img" style="padding-top: 15;">';
-                              echo '      <img src= "';
+                              echo '      <img src= "img/';
                               echo $row["Picture"];
                               echo '"alt="no img found" style="width:90% ; height:90%;">';
                               echo '      <p style="width: 100%; border:0;  padding-top: 15;   font-size: 20px;">';
@@ -85,7 +91,7 @@
       <div class="row">
         <div class="column">
           <div class="card">
-            <img src="Fialas2.jpg" alt="Jane" style="width:100%">
+            <img src="img/Fialas2.jpg" alt="Jane" style="width:100%">
             <div class="container" style="text-align: center;">
               <h2>Mike Smith</h2>
               <p class="title">CEO & Founder</p>
@@ -98,7 +104,7 @@
       
         <div class="column">
           <div class="card">
-            <img src="barback.webp" alt="Mike" style="width:100%">
+            <img src="img/barback.webp" alt="Mike" style="width:100%">
             <div class="container" style="text-align: center;">
               <h2>Bob Ross</h2>
               <p class="title">CFO</p>
@@ -111,7 +117,7 @@
       
         <div class="column">
           <div class="card">
-            <img src="designer.webp" alt="John" style="width:100%">
+            <img src="img/designer.webp" alt="John" style="width:100%">
             <div class="container" style="text-align: center;">
               <h2>jane smith</h2>
               <p class="title">Lead Designer</p>
