@@ -23,7 +23,7 @@
          $_SESSION['login_user'] = $myusername;
          $_SESSION['authenticated'] = true;
          $error = "valid";
-         header("location: fart.php");
+         header("location: admin.php");
       }else
       {
          $_SESSION['authenticated'] = false;
@@ -31,7 +31,6 @@
       }
    }
 ?>
-
 <html>   
    <head>
       <title>Login Page</title>
