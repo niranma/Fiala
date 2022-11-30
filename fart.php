@@ -22,6 +22,96 @@
                 width: 100%;
                 height: 15%;
             }
+            .button {
+                display: inline-block;
+                padding: 15px 25px;
+                font-size: 24px;
+                cursor: pointer;
+                text-align: center;
+                text-decoration: none;
+                outline: none;
+                color: #fff;
+                background-color: #4CAF50;
+                border: none;
+                border-radius: 15px;
+                box-shadow: 0 9px #999;
+            }       
+
+            .button:hover {
+                background-color: gray;
+            }
+            .button:active {
+                background-color: #3e8e41;
+                box-shadow: 0 5px #666;
+                transform: translateY(4px);
+            }
+            .button2{
+                background-color: darkred;
+            }
+            .button3{
+                background-color: darkred;
+            }
+            .button4{
+                background-color: darkorange;
+            }
+            .button5{
+                background-color: darkgreen;
+            }
+            .button6{
+                background-color: darkred;
+            }
+
+            
+            .form-style-6 h1{
+                background: black;
+                padding: 20px 0;
+                font-size: 140%;
+                font-weight: 300;
+                text-align: center;
+                color: #fff;
+                margin: -16px -16px 16px -16px;
+            }
+            .form-style-6 h5{
+                background: black;
+                padding: 20px 0;
+                font-size: 140%;
+                font-weight: 300;
+                text-align: center;
+                color: #fff;
+                margin: -16px -16px 16px -16px;
+            }
+            .form-style-6 h6{
+                background: black;
+                padding: 20px 0;
+                font-size: 140%;
+                font-weight: 300;
+                text-align: center;
+                color: #fff;
+                margin: -16px -16px 16px -16px;
+            }
+            .form-style-6 input[type="text"],
+            .form-style-6 input[type="date"],
+            .form-style-6 input[type="datetime"],
+            .form-style-6 input[type="email"],
+            .form-style-6 input[type="number"],
+            .form-style-6 input[type="search"],
+            .form-style-6 input[type="time"],
+            .form-style-6 input[type="url"],
+            .form-style-6 textarea,
+            .form-style-6 select 
+            {
+                
+                outline: none;
+                box-sizing: border-box;
+               
+                width: 100%;
+                background: #fff;
+                margin-bottom: 4%;
+                border: 1px solid #ccc;
+                padding: 3%;
+                color: #555;
+                font: 95% Arial, Helvetica, sans-serif;
+            }
         </style>
     </head>
     <body style="background-color: #e7dfdf;">
@@ -47,15 +137,16 @@
                 }
 
                 // successful connection to database
-                echo "<h1 style='text-align: center; padding-top: 2%;'>Successful connection to the Database!</h1><br><br><br>";
+                echo "<h1 style='text-align: lefft; font-size:120%;padding-top: 2%;'>Successful connection to the Database!</h1>";
 
                 echo'
                         <form method="post" style="text-align: center;">
                             <!-- view data button -->
                             <button style="margin-bottom: 50px; font-size: 2vw; height: 3vw;"type="submit" name="view" class="button" >View data </button>  
-                            
+                            <!-- close data button -->
+                            <button style="margin-bottom: 50px; font-size: 2vw; height: 3vw;"type="submit" name="close" class="button button2" >Close data </button> 
                             <!-- logout button -->
-                            <button name="logout" style="margin-bottom: 50px; margin-left:10%; font-size: 2vw; height: 3vw;" onclick="">Logout</button>
+                            <button name="logout" style="margin-bottom: 50px; margin-left:30%; font-size: 2vw; height: 3vw;" onclick=""class="button button3">Logout</button>
                         </form>
                     ';
                 
@@ -194,22 +285,22 @@
         
         <!-- edit data section       DO NOT CHANGE NAME FIELD IT WILL BREAK THE PHP-->
         <div name="main" style=" font-size: 20px; background-color: #e7dfdf;">
-
+          <div class="form-style-6">
             <form method="post">
                 <div style=" text-align: center;">
-                     <h1 style="text-align: center;">Edit data in the Databae</h1>
+                     <h1 style="text-align: center;">Edit Existing Data</h1>
                      <h2 style="text-align: center;">You can edit any value except the ID.</h2>
                      <h2 style="text-align: center;">Use the ID to select what item you want to change.</h2>
 
                         <table style="margin-left: 25%;width: 50%">
                             <tr>
                                 <th><p style="display: inline; font-size: 20px">ID: </p></th>
-                                <th><input style="margin-right: 8%;" type="number" name="id" placeholder="number's only"/></th>
+                                <th><input style="margin-right: 8%;" type="number" name="id" placeholder="numbers only"/></th>
                             </tr>
 
                             <tr>
                                 <th><p style="display: inline; font-size: 20px">Name: </p></th>
-                                <th><input style="margin-right: 8%;" type="text" name="name" placeholder="character's only "/></th>
+                                <th><input style="margin-right: 8%;" type="text" name="name" placeholder="characters only "/></th>
                             </tr>
                             
                             <tr>
@@ -219,18 +310,18 @@
                             
                             <tr>
                                 <th><p style="display: inline; font-size: 20px">Upload Picture (WIP)</p></th>
-                                <th><input style="margin-right: 8%;" type="text" name="picture" placeholder="character's only "/></th>
+                                <th><input style="margin-right: 8%;" type="text" name="picture" placeholder="characters only "/></th>
                             </tr>
                             
                             <tr>
                                 <th><p style="display: inline; font-size: 20px">Item Description</p></th>
-                                <th><input style="margin-right: 8%;" type="text" name="description" placeholder="character's only "/></th>
+                                <th><input style="margin-right: 8%;" type="text" name="description" placeholder="characters only "/></th>
                             </tr>
                         </table>
                     
                     <br>
                 </div>
-                <button style="margin-left: 35%;text-align: center; font-size: 2vw; height: 3vw; width: 30%;" type="submit" name="edit" class="button" value="Change">Make changes</button>
+                <button style="margin-left: 35%;text-align: center; font-size: 2vw; height: 3vw; width: 30%;" type="submit" name="edit" class="button button4" value="Change">Make changes</button>
             </form>
             
             <div class="spacer"></div>
@@ -238,17 +329,17 @@
         <form method="post">
             <div style="text-align: center;">
 
-                <h1>add new data</h1>
-                <h2>to add new data chose a unique ID number and fill in the following fields</h2>
+                <h5>Add new data</h5>
+                <h2>Choose a unique ID number and fill in the following fields</h2>
                 <table style="margin-left: 25%;width: 50%">
                     <tr>
                         <th><p style="display: inline; font-size: 20px">ID: </p></th>
-                        <th><input type="number" name="id" placeholder="number's only"/></th>
+                        <th><input type="number" name="id" placeholder="numbers only"/></th>
                     </tr>
 
                     <tr>
                         <th><p style="display: inline;  font-size: 20px">Name: </p></th>
-                        <th><input type="text" name="name" placeholder="character's only "/></th>
+                        <th><input type="text" name="name" placeholder="characters only "/></th>
                     </tr>
 
                     <tr>
@@ -258,17 +349,17 @@
 
                     <tr>
                         <th><p style="display: inline; font-size: 20px">Upload Picture (WIP)</p></th>
-                        <th><input type="text" name="picture" placeholder="character's only "/></th>
+                        <th><input type="text" name="picture" placeholder="characters only "/></th>
                     </tr>
 
                     <tr>
                         <th><p style="display: inline; font-size: 20px">Item Description</p></th>
-                        <th><input type="text" name="description" placeholder="character's only "/></th>
+                        <th><input type="text" name="description" placeholder="characters only "/></th>
                     </tr>
 
                 </table>
                 <br>
-                <button style="text-align: center; font-size: 2vw; height: 3vw; width: 30%;" type="submit" name="add" class="button" value="add">Add Data</button>
+                <button style="text-align: center; font-size: 2vw; height: 3vw; width: 30%;" type="submit" name="add" class="button button5" value="add">Add Data</button>
             </div>
         </form>
 
@@ -278,18 +369,18 @@
         <form method="post">
             <div style="text-align: center;">
 
-                <h1>Remove Data</h1>
+                <h6>Remove Data</h6>
                 <h2>To remove an item enter the ID number into the field</h2>
                 <table style="margin-left: 25%;width: 50%">
                     <tr>
                         <th><p style="display: inline; font-size: 20px">Item Description</p></th>
-                        <th><input style="margin-right: -8%;" type="number" name="id" placeholder="numbers's only "/></th>
+                        <th><input style="margin-right: -8%;" type="number" name="id" placeholder="numbers only "/></th>
                     </tr>
                 </table>
                 <br>
-                <button style="text-align: center; font-size: 2vw; height: 3vw; width: 30%;" type="submit" name="remove" class="button" value="add">Remove Data</button>
+                <button style="text-align: center; font-size: 2vw; height: 3vw; width: 30%;" type="submit" name="remove" class="button button6" value="add">Remove Data</button>
             </div>
         </form>
-        
+        </div>
     </body>
 </html>
