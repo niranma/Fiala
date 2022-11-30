@@ -22,12 +22,12 @@
     </header>
 
     <!--ordering food section-->
-    <div id="food_section">
+    <div id="food_section" >
       <div class="order_food">
         <h2>Our Current Menu!</h2>
       </div>
           <div class="order_drinks">
-            <div style="z-index: 0; background-color: #ededed; width: 100%; height: 100%; text-align: center;">
+            <div style="z-index: 0; background-color: #ed#b7b6b6eded; width: 100%; height: 100%; text-align: center;">
               <div style="padding:1.5%"></div>  
               <div class="drink_menu">
                   
@@ -59,10 +59,6 @@
                               echo '"alt="no img found" style="width:90% ; height:90%;">';
                               echo '      <p style="width: 100%; border:0;  padding-top: 15;   font-size: 20px;">';
                               echo $row["name"]. "<br/>$ ". $row["price"]. '</p>';
-
-                              // echo '      <p style="width: 100%; border:0;font-size: 20px;">';
-                              // echo $row["price"].'</p>';
-
                               echo ' <p>' .$row["description"].'</p>';
                               echo '    </div>';
                               echo '</div>';

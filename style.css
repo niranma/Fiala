@@ -185,7 +185,7 @@ html {
 .drink_menu {
   height:90%;
   width:75%;
-  background-color: #d1cfcf;
+  background-color: #b7b6b6;
   border:1px solid #9b9a9a;
   font:16px/26px Georgia, Garamond, Serif;
   overflow:auto;
@@ -197,8 +197,8 @@ html {
 }
 
 .food_item{
-  background-color: #b7b6b6;
-  height: 25%;
+  background-color: #e7dfdf;
+  height: 35%;
   width: 49%;
   display: inline-block;
   margin: 5;
