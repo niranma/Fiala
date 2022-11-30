@@ -1,0 +1,133 @@
+<html>
+
+    <head>
+        <title>About Us!</title>
+    </head>
+
+    <body>
+    <!-- css sheets -->
+    <link rel="stylesheet" href="style.css">
+        
+   <!-- navigation bar -->
+   <header>
+      <img class="logo" src="img/FialaLogo.png" width="70" height="50" alt="logo">
+      <nav>
+        <ul class="nav__links">
+          <li><a href="index.html" >Home</a></li>
+          <li><a href="food.php" >Order food & drinks</a></li>
+          <li><a href="index.html#about_us">About us</a></li>
+        </ul>
+      </nav>
+      <a class="cta"><button>Contact</button></a>
+    </header>
+
+    <!--ordering food section-->
+    <div id="food_section">
+      <div class="order_food">
+        <h2>Our Current Menu!</h2>
+      </div>
+          <div class="order_drinks">
+            <div style="z-index: 0; background-color: #ededed; width: 100%; height: 100%; text-align: center;">
+              <div style="padding:1.5%"></div>  
+              <div class="drink_menu">
+                  
+                <!-- testing php -->
+                <?php
+                    $con = mysqli_connect("localhost","kevin","kevin", "beer");
+
+                    // Check connection
+                    if (mysqli_connect_errno()) {
+                      echo "Failed to connect to MySQL: " . mysqli_connect_error();
+                      exit();
+                    }
+
+                    // echo "Database connected!". "<br><br><br><br>";
+
+                      // button1 has been pressed 
+                      $sql = "SELECT id, name, price, Picture, description, Link  from menu;";
+                      $result=mysqli_query($con,$sql);
+                      
+                      if ($result->num_rows > 0) {
+                          // output data of each row
+                          while($row = $result->fetch_assoc()) {
+                              // echo $row['picture'];
+                              //   &emsp; is a 4 space escape char
+                              echo '<div class="row food_item">';
+                              echo '    <div class="food_img" style="padding-top: 15;">';
+                              echo '      <img src= "img/';
+                              echo $row["Picture"];
+                              echo '"alt="no img found" style="width:90% ; height:90%;">';
+                              echo '      <p style="width: 100%; border:0;  padding-top: 15;   font-size: 20px;">';
+                              echo $row["name"]. "<br/>$ ". $row["price"]. '</p>';
+
+                              // echo '      <p style="width: 100%; border:0;font-size: 20px;">';
+                              // echo $row["price"].'</p>';
+
+                              echo ' <p>' .$row["description"].'</p>';
+                              echo '    </div>';
+                              echo '</div>';
+                              
+                            }
+                        } else
+                        {
+                          echo "<h1>more coming soon!</h1>";
+                        }
+                        echo "<br><br><br><br>";
+                    
+                  ?>
+              </div>
+            </div>
+        </div>
+      </div>
+
+          <div class="soicalMedia">
+            <h1>Stay up to date with us on our social media </h1>
+            <p><a href="https://www.facebook.com/fialabrothers/">Facebook</a></p>
+            <p><a href="https://www.instagram.com/fialabros/">Instagram</a></p>
+            <p><a href="https://untappd.com/v/fiala-brothers-brewery-beer-hall/11508670">Untapped</a></p>
+          </div>
+
+          <h2 style="text-align:center">Our Team</h2>
+      <div class="row">
+        <div class="column">
+          <div class="card">
+            <img src="img/Fialas2.jpg" alt="Jane" style="width:100%">
+            <div class="container" style="text-align: center;">
+              <h2>Mike Smith</h2>
+              <p class="title">CEO & Founder</p>
+              <p>I am Mike Smith and I am the CEO and founder of Fiala Brothers, it has always been my dream to own a bar.</p>
+              <p>Mike@FialaBrothers.com</p>
+              <p><button class="button">Contact</button></p>
+            </div>
+          </div>
+        </div>
+      
+        <div class="column">
+          <div class="card">
+            <img src="img/barback.webp" alt="Mike" style="width:100%">
+            <div class="container" style="text-align: center;">
+              <h2>Bob Ross</h2>
+              <p class="title">CFO</p>
+              <p>I am the CFO of Fiala Brothers, I manage all the money or what ever a CFO does</p>
+              <p>Bob@FialaBrothers.com</p>
+              <p><button class="button">Contact</button></p>
+            </div>
+          </div>
+        </div>
+      
+        <div class="column">
+          <div class="card">
+            <img src="img/designer.webp" alt="John" style="width:100%">
+            <div class="container" style="text-align: center;">
+              <h2>jane smith</h2>
+              <p class="title">Lead Designer</p>
+              <p>I have be desinging products for many people and businesses, I have been doing this for 17 years.</p>
+              <p>Jane@FialaBrothers.com</p>
+              <p><button class="button">Contact</button></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
+
+</html>

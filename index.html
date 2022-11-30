@@ -8,77 +8,93 @@
     <!-- css sheets -->
     <link rel="stylesheet" href="style.css">
         
+
+    
     <!-- navigation bar -->
-      <div class="topnav">
-        <a class="active" href="#main_section" >Home</a>
-        <a href="#food_section" >Order food & drinks</a>
-        <a href="#about_us">About us</a>
-      </div>
+    <header>
+      <img class="logo" src="img/FialaLogo.png" width="70" height="50" alt="logo">
+      <nav>
+        <ul class="nav__links">
+          <li><a href="#main_section" >Home</a></li>
+          <li><a href="food.php" >Order food & drinks</a></li>
+          <li><a href="#about_us">About us</a></li>
+        </ul>
+      </nav>
+      <a class="cta"><button>Contact</button></a>
+    </header>
+
 
 
       <!-- index, start of the site here-->
       <div id="main_section">
-        <h1>welcome to the site, maybe some pictures and what is on sale and events????</h1>
-        <h1> location here </h1>
-        <h1>current deals</h1>
-        <h1> live facebook page link??</h1>
+        <h1 style="text-align: center; font-size: 90px">Welcome to <br/>Fiala Brothers Brewery & Beer Hall</h1>
+        <div>
+          <img src="img/location.png" alt="" class="center">
+        </div>
+        <!-- <h1> live facebook page link??</h1> -->
         <h1></h1>
       </div>
 
 
-
-
     <!--ordering food section-->
-    <div id="food_section">
-      <h1><a href="https://www.toasttab.com/fialabrothers/v3" target="_blank">food here here!</a></h1>
-      <h1>drink menu here. pull info from a DB</h1>
+    <div id="food_section" style="text-align: center;">
+      <div>
+        <h1><a href="https://www.toasttab.com/fialabrothers/v3" target="_blank">Order food here!</a></h1>
+        <h1><a href="food.php" target="_blank">view menu here!</a></h1>
+      </div>
+        
     </div>
-
-
-
 
     <!-- about us section -->
     <div class="about-section" id="about_us">
       <!-- do something to chage the height and width based on if its a mobile device or not -->
-        <img src="Fialas.jpg" alt="Mike" style="height: 50%; width: 90%;">
+        <img src="img/Fialas.jpg" alt="Mike" style="height: 90%; width: 90%;">
 
-        <h1>About Us Page</h1>
-        <p>We are Fiala brothers, we like to make beer. some text here just to add some space and make it look full</p>
-        <h3>put the address here in bold and big letters</h3>
-        <p>so we can see what it looks like when there is alot of text</p>
-        <p>we can also make more than one line of text in this section </p>
-        <p>Resize the browser window to see that this page is responsive by the way.</p>
+        <h1>About Us</h1>
+        <p>We are Fiala brothers, we are a local bar and Brewery. we are located right in the heart of uptown. We opened our doors to the public in end of August</p>
+        <a target="_blank"href="https://www.google.com/maps/dir//Fiala+Brothers+Brewery+%26+Beer+Hall,+East+Beaufort+Street,+Normal,+IL/@40.5096768,-89.0179393,13z/data=!4m8!4m7!1m0!1m5!1m1!1s0x880b71335d29e2d3:0x165880fe9ae326ed!2m2!1d-88.9829199!2d40.5096168"
+         style="color: white"><h3>address: 127 E Beaufort St, Normal, IL 61761</h3></a>
+        <p>Here at Fiala brothers we strive to make our self the best bar & Brewery in Normal!</p>
+        <p>for the foodies we currently have 12 mouth watering meals on our menu for you to pick from.</p>
+        <p>for the drinkers we currently have 24 diffrent drinks to pick from and soon we will start brewing our own beer!</p>
       </div>
       
       <h1 style="text-align:center; padding-top: 1vh;">How we do our brewing</h1>
         <div class="row">
             <div class="description-section">
-                <img src="Fialas3.jpg" alt="John">
-                <p>here is some text about the process of brewing our own beer</p>
-                <p>here is something about how we source our ingredenets </p>
+                <img src="img/Fialas3.jpg" alt="John">
+                <p>We use the best ingredients to brew our beer from localy sourced farms and businesses.</p>
+                <p>We also brew our beer in house to ensure it can be as fresh as possible for you!</p>
             <div>
         <div>
 
         <h1 style="text-align:center; padding-top: 1vh;">community</h1>
         <div class="row">
             <div class="description-section">
-                <img src="Fialas5.jpg" alt="John">
-                <p>here is some text about the events we host or did something for. idk what else we could really add here</p>
+                <img src="img/Fialas5.jpg" alt="John">
+                <p>this is where the most recent community event goes</p>
             </div>
         <div>
 
-          <h1>social media links?</h1>
+
+          <!-- <div class="soicalMedia">
+            <h1>Stay up to date with us on our social media </h1>
+            <p><a href="https://www.facebook.com/fialabrothers/">Facebook</a></p>
+            <p><a href="https://www.instagram.com/fialabros/">Instagram</a></p>
+            <p><a href="https://untappd.com/v/fiala-brothers-brewery-beer-hall/11508670">Untapped</a></p>
+          </div> -->
+
 
       <h2 style="text-align:center">Our Team</h2>
       <div class="row">
         <div class="column">
           <div class="card">
-            <img src="Fialas2.jpg" alt="Jane" style="width:100%">
+            <img src="img/Fialas2.jpg" alt="Jane" style="width:100%">
             <div class="container">
-              <h2>Jane Doe</h2>
+              <h2>Mike Smith</h2>
               <p class="title">CEO & Founder</p>
-              <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-              <p>jane@example.com</p>
+              <p>I am Mike Smith and I am the CEO and founder of Fiala Brothers, it has always been my dream to own a bar.</p>
+              <p>Mike@FialaBrothers.com</p>
               <p><button class="button">Contact</button></p>
             </div>
           </div>
@@ -86,12 +102,12 @@
       
         <div class="column">
           <div class="card">
-            <img src="Fialas3.jpg" alt="Mike" style="width:100%">
+            <img src="img/barback.webp" alt="Mike" style="width:100%">
             <div class="container">
               <h2>Bob Ross</h2>
-              <p class="title">Art Director</p>
-              <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-              <p>mike@example.com</p>
+              <p class="title">CFO</p>
+              <p>I am the CFO of Fiala Brothers, I manage all the money or what ever a CFO does</p>
+              <p>Bob@FialaBrothers.com</p>
               <p><button class="button">Contact</button></p>
             </div>
           </div>
@@ -99,20 +115,17 @@
       
         <div class="column">
           <div class="card">
-            <img src="Fialas4.jpg" alt="John" style="width:100%">
+            <img src="img/designer.webp" alt="John" style="width:100%">
             <div class="container">
-              <h2>John Doe</h2>
-              <p class="title">Designer</p>
-              <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-              <p>john@example.com</p>
+              <h2>jane smith</h2>
+              <p class="title">Lead Designer</p>
+              <p>I have be desinging products for many people and businesses, I have been doing this for 17 years.</p>
+              <p>Jane@FialaBrothers.com</p>
               <p><button class="button">Contact</button></p>
             </div>
           </div>
         </div>
       </div>
-
-  </body>
-
 
     </body>
 
