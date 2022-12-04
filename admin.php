@@ -116,78 +116,141 @@
     </head>
     <body style="background-color: #e7dfdf;">
         <?php
-
-
-            $target_dir = "img/";
-            $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-            $uploadOk = 1;
-            $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-
-            // Check if image file is a actual image or fake image
-            if(isset($_POST["submit"])) {
-            $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-            if($check !== false) {
+    $img_path = "nulls";
+            function check_img(){
+                $target_dir = "img/";
+                $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
                 $uploadOk = 1;
-            } else {
-                $uploadOk = 0;
-            }
-            }
+                $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+                
+                $img_path = basename($_FILES["fileToUpload"]["name"]);
 
-            // Check if file already exists
-            if (file_exists($target_file) && isset($_POST["submit"])) {
-            echo "<h1 style='text-align: center; font-size: 100px;'>Sorry, file already exists. Please try again with a new name</h1>";
-            $uploadOk = 0;
-            }
-
-            // Check file size
-            if ($_FILES["fileToUpload"]["size"] > 500000 && isset($_POST["submit"]))  {
-                echo "<h1 style='text-align: center; font-size: 100px;'>Sorry, file is to big. Please again with samller file.</h1>";
-            $uploadOk = 0;
-            }
-
-            // Allow certain file formats
-            if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-            && $imageFileType != "gif"  && isset($_POST["submit"])) {
-                echo "<h1 style='text-align: center; font-size: 100px;'>Sorry, only JPG, JPEG, PNG & GIF files are allowed.</h1>";
-            $uploadOk = 0;
-            }
-
-            // Check if $uploadOk is set to 0 by an error
-            if ($uploadOk == 0 && isset($_POST["submit"])) {
-                echo "<h1 style='text-align: center; font-size: 100px;'>Sorry, your file was not uploaded.</h1>";
-            // if everything is ok, try to upload file
-            } else {
-            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file) && isset($_POST["submit"])) {
-                $img_path =  htmlspecialchars( basename( $_FILES["fileToUpload"]["name"]));
-            } else {
-                if (isset($_POST["submit"])){
-                    echo "<h1 style='text-align: center; font-size: 100px;'>Sorry, there was an error uploading your file.</h1>";
+                // Check if image file is a actual image or fake image
+                if(isset($_POST["submit"])) {
+                    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+                    if($check !== false) {
+                        $uploadOk = 1;
+                    } else {
+                        $uploadOk = 0;
+                    }
                 }
+                    
+                // // Check if file already exists
+                // if (file_exists($target_file)) {
+                //     echo "<h1 style='text-align: center; font-size: 100px;'>Sorry, file already exists. Please try again with a new name</h1>";
+                //     $uploadOk = 0;
+                // }
+                
+                // Check file size
+                if ($_FILES["fileToUpload"]["size"] > 500000)  {
+                    echo "<h1 style='text-align: center; font-size: 100px;'>Sorry, file is to big. Please again with samller file.</h1>";
+                    $uploadOk = 0;
+                }
+                
+                // Allow certain file formats
+                if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                && $imageFileType != "gif") {
+                    echo "<h1 style='text-align: center; font-size: 100px;'>Sorry, only JPG, JPEG, PNG & GIF files are allowed.</h1>";
+                    $uploadOk = 0;
+                }
+                
+                // Check if $uploadOk is set to 0 by an error
+                if ($uploadOk == 0 ) {
+                    echo "<h1 style='text-align: center; font-size: 100px;'>Sorry, your file was not uploaded.</h1>";
+                    // if everything is ok, try to upload file
+                } else {
+                    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                        $img_path =  htmlspecialchars( basename( $_FILES["fileToUpload"]["name"]));
+                    } else {
+                        if (isset($_POST["submit"])){
+                            echo "<h1 style='text-align: center; font-size: 100px;'>Sorry, there was an error uploading your file.</h1>";
+                        }
+                    }
+                }
+                return($img_path);
             }
+            
+
+
+
+            function check_imgADD(){
+                $target_dir = "img/";
+                $target_file = $target_dir . basename($_FILES["fileToUploadADD"]["name"]);
+                $uploadOk = 1;
+                $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+                
+                $img_path = basename($_FILES["fileToUploadADD"]["name"]);
+
+                // Check if image file is a actual image or fake image
+                if(isset($_POST["submit"])) {
+                    $check = getimagesize($_FILES["fileToUploadADD"]["tmp_name"]);
+                    if($check !== false) {
+                        $uploadOk = 1;
+                    } else {
+                        $uploadOk = 0;
+                    }
+                }
+                    
+                // // Check if file already exists
+                // if (file_exists($target_file)) {
+                //     echo "<h1 style='text-align: center; font-size: 100px;'>Sorry, file already exists. Please try again with a new name</h1>";
+                //     $uploadOk = 0;
+                // }
+                
+                // Check file size
+                if ($_FILES["fileToUploadADD"]["size"] > 500000)  {
+                    echo "<h1 style='text-align: center; font-size: 100px;'>Sorry, file is to big. Please again with samller file.</h1>";
+                    $uploadOk = 0;
+                }
+                
+                // Allow certain file formats
+                if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                && $imageFileType != "gif") {
+                    echo "<h1 style='text-align: center; font-size: 100px;'>Sorry, only JPG, JPEG, PNG & GIF files are allowed.</h1>";
+                    $uploadOk = 0;
+                }
+                
+                // Check if $uploadOk is set to 0 by an error
+                if ($uploadOk == 0 ) {
+                    echo "<h1 style='text-align: center; font-size: 100px;'>Sorry, your file was not uploaded.</h1>";
+                    // if everything is ok, try to upload file
+                } else {
+                    if (move_uploaded_file($_FILES["fileToUploadADD"]["tmp_name"], $target_file)) {
+                        $img_path =  htmlspecialchars( basename( $_FILES["fileToUploadADD"]["name"]));
+                    } else {
+                        if (isset($_POST["submit"])){
+                            echo "<h1 style='text-align: center; font-size: 100px;'>Sorry, there was an error uploading your file.</h1>";
+                        }
+                    }
+                }
+                return($img_path);
             }
 
 
+
+            
             // if user not logged in redirect to logout page  
             if ($_SESSION['authenticated'] == False)
             {
                 header("location: logout.php");
             }
-
+            
             // if user is authenticated
             if (isset($_SESSION['authenticated']) and $_SESSION['authenticated'] == true)
             {
                 // Database connection
                 $con = mysqli_connect("localhost","kevin","kevin", "beer");
-
+                
                 // Check connection
                 if (mysqli_connect_errno()) 
                 {
                     echo "Failed to connect to MySQL: " . mysqli_connect_error();
                     exit();
                 }
-
+                
                 // successful connection to database
-                echo "<h1 style='text-align: lefft; font-size:120%;padding-top: 2%;'>Successful connection to the Database!</h1>";
+                echo "<h1 style='text-align: center; font-size:40px;padding-top: 2%;'>Successful connection to the Database!</h1>";
+                echo "<br><br><br><br>";
 
                 echo'
                         <form method="post" style="text-align: center;">
@@ -257,6 +320,8 @@
                     
                     // prepare the SQL string  
                     // i know this is bad, but it works so....
+                    $img_path = check_img();
+
                     $sql = "UPDATE menu SET Name = '";
                     $sql .= $_POST["name"];
                     $sql .= "', price='";
@@ -271,7 +336,7 @@
                     // check if connected to the DB and user is authenticated 
                     if ($con->query($sql) === TRUE and $_SESSION['authenticated'] == true)
                     {
-                        echo "New record created successfully";
+                        echo "<h1 style='text-align: center; font-size: 100px;'>Record edit was successful</h1>";
                     } else {
                         echo "Error: " . $sql . "<br>" . $con->error;
                         echo "contact support";
@@ -285,17 +350,22 @@
                 if(array_key_exists('add', $_POST) and $_SESSION['authenticated'] == true) {
 
                     // prepare the SQL for adding data
-                    $data = $_POST["id"].",'".$_POST['name']."',".$_POST["price"].",'".$_POST["picture"]."','".$_POST["description"]."'";
+                    $img_path = check_img();
+
+                    $data = $_POST["id"].",'".$_POST['name']."',".$_POST["price"].",'".$img_path."','".$_POST["description"]."'";
                     $sql = "INSERT INTO menu (id, name, price, picture, description)
                     VALUES (". $data. ")";
 
                     // check if connected to the DB
                     if ($con->query($sql) === TRUE and $_SESSION['authenticated'] == true)
                     {
-                        echo "New record created successfully";
+                        echo "<h1 style='text-align: center; font-size: 100px;'>New record created successfully</h1>";
                     } else {
+                        
+                        echo "<h1 style='text-align: center; font-size: 100px;'>";
                         echo "Error: " . $sql . "<br>" . $con->error;
                         echo "contact support";
+                        echo "</h1>";
                     }
                     
                     // show data even on error to show user what the DB looks like
@@ -312,12 +382,14 @@
                     // if result found and user is authenticated remove data
                     if ($result=mysqli_query($con,$sql) === TRUE and $_SESSION['authenticated'] == true)
                     {
-                        echo "removed Item       ID: ".$_POST["id"];
+                        echo "<h1 style='text-align: center; font-size: 100px;'>removed Item       ID: ".$_POST["id"]. "</h1>";
                         echo "<br><br><br>";
                     } else 
                     {
+                        echo "<h1 style='text-align: center; font-size: 100px;'>";
                         echo "Error: " . $sql . "<br>" . $con->error;
                         echo "contact support";
+                        echo "</h1>";
                     }
 
                     // show data even on error to show user what the DB looks like
@@ -341,9 +413,9 @@
           <div class="form-style-6">
             <form method="post" enctype="multipart/form-data">
                 <div style=" text-align: center;">
-                     <h1 style="text-align: center;">Edit Existing Data</h1>
-                     <h2 style="text-align: center;">You can edit any value except the ID.</h2>
-                     <h2 style="text-align: center;">Use the ID to select what item you want to change.</h2>
+                     <h1 style="text-align: center;  font-size: 52px;">Edit Existing Data</h1>
+                     <h2 style="text-align: center; font-size: 40px;">You can edit any value except the ID.</h2>
+                     <h2 style="text-align: center;  font-size: 40px;">Use the ID to select what item you want to change.</h2>
 
                         <table style="margin-left: 25%;width: 50%">
                             <tr>
@@ -362,7 +434,7 @@
                             </tr>
                             
                             <tr>
-                                <th><p style="display: inline; font-size: 20px">Upload Picture (WIP)</p></th>
+                                <th><p style="display: inline; font-size: 20px">Upload Picture</p></th>
                                 <th><input style="margin-right: 8%;" type="file" name="fileToUpload" id="fileToUpload" placeholder="characters only "/></th>
                             </tr>
                             
@@ -379,11 +451,11 @@
             
             <div class="spacer"></div>
         <!-- add data section       DO NOT CHANGE NAME FIELD IT WILL BREAK THE PHP-->
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <div style="text-align: center;">
 
-                <h5>Add new data</h5>
-                <h2>Choose a unique ID number and fill in the following fields</h2>
+                <h1 style="text-align: center;  font-size: 52px;">Add new data</h1>
+                <h2 style="text-align: center;  font-size: 40px;">Choose a unique ID number and fill in the following fields</h2>
                 <table style="margin-left: 25%;width: 50%">
                     <tr>
                         <th><p style="display: inline; font-size: 20px">ID: </p></th>
@@ -401,10 +473,9 @@
                     </tr>
 
                     <tr>
-                        <th><p style="display: inline; font-size: 20px">Upload Picture (WIP)</p></th>
-                        <th><input type="text" name="picture" placeholder="characters only "/></th>
-                    </tr>
-
+                    <th>
+                        <p style="display: inline; font-size: 20px">Upload Picture (WIP)</p></th>
+                        <th><input style="margin-right: 8%;" type="file" name="fileToUpload" id="fileToUpload" placeholder="characters only "/></th>
                     <tr>
                         <th><p style="display: inline; font-size: 20px">Item Description</p></th>
                         <th><input type="text" name="description" placeholder="characters only "/></th>
@@ -419,11 +490,11 @@
         <div class="spacer"></div>
 
         <!-- remove data section       DO NOT CHANGE NAME FIELD IT WILL BREAK THE PHP-->
-        <form method="post">
+        <form method="post" >
             <div style="text-align: center;">
 
-                <h6>Remove Data</h6>
-                <h2>To remove an item enter the ID number into the field</h2>
+                <h1 style="text-align: center;  font-size: 52px;">Remove Data</h1>
+                <h2 style="text-align: center;  font-size: 40px;">To remove an item enter the ID number into the field</h2>
                 <table style="margin-left: 25%;width: 50%">
                     <tr>
                         <th><p style="display: inline; font-size: 20px">Item Description</p></th>
