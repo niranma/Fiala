@@ -117,6 +117,56 @@
     <body style="background-color: #e7dfdf;">
         <?php
 
+
+            $target_dir = "img/";
+            $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+            $uploadOk = 1;
+            $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+            // Check if image file is a actual image or fake image
+            if(isset($_POST["submit"])) {
+            $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+            if($check !== false) {
+                $uploadOk = 1;
+            } else {
+                $uploadOk = 0;
+            }
+            }
+
+            // Check if file already exists
+            if (file_exists($target_file) && isset($_POST["submit"])) {
+            echo "<h1 style='text-align: center; font-size: 100px;'>Sorry, file already exists. Please try again with a new name</h1>";
+            $uploadOk = 0;
+            }
+
+            // Check file size
+            if ($_FILES["fileToUpload"]["size"] > 500000 && isset($_POST["submit"]))  {
+                echo "<h1 style='text-align: center; font-size: 100px;'>Sorry, file is to big. Please again with samller file.</h1>";
+            $uploadOk = 0;
+            }
+
+            // Allow certain file formats
+            if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+            && $imageFileType != "gif"  && isset($_POST["submit"])) {
+                echo "<h1 style='text-align: center; font-size: 100px;'>Sorry, only JPG, JPEG, PNG & GIF files are allowed.</h1>";
+            $uploadOk = 0;
+            }
+
+            // Check if $uploadOk is set to 0 by an error
+            if ($uploadOk == 0 && isset($_POST["submit"])) {
+                echo "<h1 style='text-align: center; font-size: 100px;'>Sorry, your file was not uploaded.</h1>";
+            // if everything is ok, try to upload file
+            } else {
+            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file) && isset($_POST["submit"])) {
+                $img_path =  htmlspecialchars( basename( $_FILES["fileToUpload"]["name"]));
+            } else {
+                if (isset($_POST["submit"])){
+                    echo "<h1 style='text-align: center; font-size: 100px;'>Sorry, there was an error uploading your file.</h1>";
+                }
+            }
+            }
+
+
             // if user not logged in redirect to logout page  
             if ($_SESSION['authenticated'] == False)
             {
@@ -212,7 +262,7 @@
                     $sql .= "', price='";
                     $sql .= $_POST["price"];
                     $sql .= "', picture='";
-                    $sql .= $_POST["picture"];
+                    $sql .= $img_path;
                     $sql .= "', description='";
                     $sql .= $_POST["description"];
                     $sql .= "' WHERE id = ";
@@ -289,7 +339,7 @@
         <!-- edit data section       DO NOT CHANGE NAME FIELD IT WILL BREAK THE PHP-->
         <div name="main" style=" font-size: 20px; background-color: #e7dfdf;">
           <div class="form-style-6">
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
                 <div style=" text-align: center;">
                      <h1 style="text-align: center;">Edit Existing Data</h1>
                      <h2 style="text-align: center;">You can edit any value except the ID.</h2>
@@ -313,7 +363,7 @@
                             
                             <tr>
                                 <th><p style="display: inline; font-size: 20px">Upload Picture (WIP)</p></th>
-                                <th><input style="margin-right: 8%;" type="text" name="picture" placeholder="characters only "/></th>
+                                <th><input style="margin-right: 8%;" type="file" name="fileToUpload" id="fileToUpload" placeholder="characters only "/></th>
                             </tr>
                             
                             <tr>
@@ -324,7 +374,7 @@
                     
                     <br>
                 </div>
-                <button style="margin-left: 35%;text-align: center; font-size: 2vw; height: 3vw; width: 30%;" type="submit" name="edit" class="button button4" value="Change">Make changes</button>
+                <button style="margin-left: 35%;text-align: center; font-size: 2vw; height: 3vw; width: 30%;" type="submit" name="edit" name="submit" class="button button4" value="Change">Make changes</button>
             </form>
             
             <div class="spacer"></div>
