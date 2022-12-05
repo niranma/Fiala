@@ -168,14 +168,14 @@ html {
 
 /* Set a specific color for each brand */
 
-/* Facebook */
-.fa-facebook {
-  background: #3B5998;
+/* instagram */
+.fa-instagram {
+  background: peachpuff;
   color: white;
 }
 
-/* Twitter */
-.fa-twitter {
+/* facebook */
+.fa-facebook {
   background: #55ACEE;
   color: white;
 }
