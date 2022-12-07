@@ -1,4 +1,6 @@
 <?php
+   ini_set ('error_reporting', E_ALL); ini_set ('display_errors', 1); ini_set ('display_startup_errors', 1);
+
     // start session to keep track of who can log in
     session_start();
 
@@ -149,7 +151,7 @@
                 
                 // Allow certain file formats
                 if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-                && $imageFileType != "gif") {
+                && $imageFileType != "gif" && $imageFileType != "") {
                     echo "<h1 style='text-align: center; font-size: 100px;'>Sorry, only JPG, JPEG, PNG & GIF files are allowed.</h1>";
                     $uploadOk = 0;
                 }
@@ -157,6 +159,8 @@
                 // Check if $uploadOk is set to 0 by an error
                 if ($uploadOk == 0 ) {
                     echo "<h1 style='text-align: center; font-size: 100px;'>Sorry, your file was not uploaded.</h1>";
+                    return(-1);
+
                     // if everything is ok, try to upload file
                 } else {
                     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
@@ -213,6 +217,8 @@
                 // Check if $uploadOk is set to 0 by an error
                 if ($uploadOk == 0 ) {
                     echo "<h1 style='text-align: center; font-size: 100px;'>Sorry, your file was not uploaded.</h1>";
+                    return(-1);
+
                     // if everything is ok, try to upload file
                 } else {
                     if (move_uploaded_file($_FILES["fileToUploadADD"]["tmp_name"], $target_file)) {
@@ -239,7 +245,7 @@
             if (isset($_SESSION['authenticated']) and $_SESSION['authenticated'] == true)
             {
                 // Database connection
-                $con = mysqli_connect("localhost","kevin","kevin", "beer");
+                $con = mysqli_connect("localhost","root","", "beer");
                 
                 // Check connection
                 if (mysqli_connect_errno()) 
@@ -322,24 +328,50 @@
                     // i know this is bad, but it works so....
                     $img_path = check_img();
 
-                    $sql = "UPDATE menu SET Name = '";
-                    $sql .= $_POST["name"];
-                    $sql .= "', price='";
-                    $sql .= $_POST["price"];
-                    $sql .= "', picture='";
-                    $sql .= $img_path;
-                    $sql .= "', description='";
-                    $sql .= $_POST["description"];
-                    $sql .= "' WHERE id = ";
-                    $sql .= $_POST["id"];
+                    if ($img_path == -1){
+                        $img_path = "no-image.png";
+                    }
 
-                    // check if connected to the DB and user is authenticated 
-                    if ($con->query($sql) === TRUE and $_SESSION['authenticated'] == true)
-                    {
-                        echo "<h1 style='text-align: center; font-size: 100px;'>Record edit was successful</h1>";
-                    } else {
-                        echo "Error: " . $sql . "<br>" . $con->error;
-                        echo "contact support";
+                    // if name field does not exist. aka empty/ null1
+                    if (! $_POST["name"]){
+                        $_POST["name"] = " ";
+                    }
+
+                    // if name field does not exist. aka empty/ null1
+                    if (! $_POST["price"]){
+                        $_POST["price"] = " ";
+                    }
+
+                    // if name field does not exist. aka empty/ null1
+                    if (! $_POST["description"]){
+                        $_POST["description"] = " ";
+                    }
+
+                                                            // if name field does not exist. aka empty/ null1
+                    if (! $_POST["id"]){
+                        echo "<h1 style='text-align: center; font-size: 100px;'>Error: No ID supplied. Try again.</h1>";
+                    } else{
+
+                        $sql = "UPDATE menu SET Name = '";
+                        $sql .= $_POST["name"];
+                        $sql .= "', price='";
+                        $sql .= $_POST["price"];
+                        $sql .= "', picture='";
+                        $sql .= $img_path;
+                        $sql .= "', description='";
+                        $sql .= $_POST["description"];
+                        $sql .= "' WHERE id = ";
+                        $sql .= $_POST["id"];
+    
+    
+                        // check if connected to the DB and user is authenticated 
+                        if ($con->query($sql) === TRUE and $_SESSION['authenticated'] == true)
+                        {
+                            echo "<h1 style='text-align: center; font-size: 100px;'>Record edit was successful</h1>";
+                        } else {
+                            echo "Error: " . $sql . "<br>" . $con->error;
+                            echo "contact support";
+                        }
                     }
 
                     // display data even if on error to show user what really happened 
@@ -352,20 +384,30 @@
                     // prepare the SQL for adding data
                     $img_path = check_img();
 
-                    $data = $_POST["id"].",'".$_POST['name']."',".$_POST["price"].",'".$img_path."','".$_POST["description"]."'";
+                    $data = $_POST["id"].",'".$_POST['name']."',".$_POST['name'].",'".$img_path."','".$_POST["description"]."'";
                     $sql = "INSERT INTO menu (id, name, price, picture, description)
                     VALUES (". $data. ")";
 
-                    // check if connected to the DB
-                    if ($con->query($sql) === TRUE and $_SESSION['authenticated'] == true)
-                    {
-                        echo "<h1 style='text-align: center; font-size: 100px;'>New record created successfully</h1>";
-                    } else {
-                        
-                        echo "<h1 style='text-align: center; font-size: 100px;'>";
-                        echo "Error: " . $sql . "<br>" . $con->error;
-                        echo "contact support";
-                        echo "</h1>";
+                    if (!$_POST["id"] || !$_POST['name'] || !$_POST['name'] || !$_POST["description"] || $img_path == -1){
+                        echo "<h1 style='text-align: center; font-size: 100px;'>Error: Some or all fields not filled in.</h1>";
+                    }else {
+                        // check if connected to the DB
+                        if ($_SESSION['authenticated'] === true)
+                        { 
+                            try{
+                                $result = $con->query($sql);
+                                echo "<h1 style='text-align: center; font-size: 100px;'>New record created successfully</h1>";
+                            } catch (Exception $e){
+                                if(mysqli_errno($con) == 1062){
+                                    echo "<h1 style='text-align: center; font-size: 100px;'>Error: Duplicate ID.</h1>";
+                                }else{
+                                     echo "<h1 style='text-align: center; font-size: 100px;'>";
+                                     echo "Error: " . $sql . "<br>" . $con->error;
+                                     echo "contact support";
+                                     echo "</h1>";
+                                 }
+                            }
+                        }
                     }
                     
                     // show data even on error to show user what the DB looks like
@@ -376,21 +418,26 @@
                 if(array_key_exists('remove', $_POST) and $_SESSION['authenticated'] == true)
                 {
 
-                    // prepare SQL to remove based on ID
-                    $sql = "DELETE FROM `MENU` WHERE `id` = " .$_POST["id"]. ";";
-
-                    // if result found and user is authenticated remove data
-                    if ($result=mysqli_query($con,$sql) === TRUE and $_SESSION['authenticated'] == true)
-                    {
-                        echo "<h1 style='text-align: center; font-size: 100px;'>removed Item       ID: ".$_POST["id"]. "</h1>";
-                        echo "<br><br><br>";
-                    } else 
-                    {
-                        echo "<h1 style='text-align: center; font-size: 100px;'>";
-                        echo "Error: " . $sql . "<br>" . $con->error;
-                        echo "contact support";
-                        echo "</h1>";
+                    if (!$_POST["id"]){
+                        echo "<h1 style='text-align: center; font-size: 100px;'>Error: No ID provided.</h1>";
+                    } else{
+                        // prepare SQL to remove based on ID
+                        $sql = "DELETE FROM `menu` WHERE `id` = " .$_POST["id"]. ";";
+    
+                        // if result found and user is authenticated remove data
+                        if ($result=mysqli_query($con,$sql) === TRUE and $_SESSION['authenticated'] == true)
+                        {
+                            echo "<h1 style='text-align: center; font-size: 100px;'>removed Item       ID: ".$_POST["id"]. "</h1>";
+                            echo "<br><br><br>";
+                        } else 
+                        {
+                            echo "<h1 style='text-align: center; font-size: 100px;'>";
+                            echo "Error: " . $sql . "<br>" . $con->error;
+                            echo "contact support";
+                            echo "</h1>";
+                        }
                     }
+
 
                     // show data even on error to show user what the DB looks like
                     viewData($con);
