@@ -128,10 +128,9 @@
             <div class="card">
               <img src="img/Fialas2.jpg" alt="Mike" style="width:100%" height="45%">
               <div class="container">
-                <h2>Mike Smith</h2>
+                <h2>Doug Fiala</h2>
                 <p class="title">CEO & Founder</p>
-                <p>I am Mike Smith and I am the CEO and founder of Fiala Brothers, it has always been my dream to own a bar.</p>
-                
+                <p>I am Doug Fiala and I am the CEO and founder of Fiala Brothers. It has always been my dream to own a bar.</p>
                 <a  class="button" href="mailto:Mike@FialaBrothers.com" target="_blank">
                     Contact             
                 </a>
@@ -145,8 +144,7 @@
               <div class="container">
                 <h2>Bob Ross</h2>
                 <p class="title">CFO</p>
-                <p>I am the CFO of Fiala Brothers, I manage all the money or what ever a CFO does</p>
-                
+                <p>I am the CFO of Fiala Brothers. I manage all the money or whatever a CFO does.</p>
                 <a  class="button" href="mailto:Bob@FialaBrothers.com" target="_blank">
                   Contact             
               </a>
@@ -177,7 +175,7 @@
         <h1><a href="mailto:fialabros@gmail.com" target="_self">fialabros@gmail.com</a></h1>
         <h1>Hours</h1>
         <h1>Sun 11am-10pm</h1>
-        <h1>Mon - 5pm-10pm</h1>
+        <h1>Mon 5pm-10pm</h1>
         <h1>Tues-Sat 11am-12am</h1>
       
       <!-- Add font awesome icons -->
